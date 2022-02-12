@@ -14,4 +14,4 @@ Usage
    `~/.config/clipboard-actions/clipboard-actions.ini` and customize
    as needed.
 2. Bind the `clipboard-actions` command to a key such as
-   <key>Mod4+v</key>.
+   <kbd>Mod4+v</kbd>.
