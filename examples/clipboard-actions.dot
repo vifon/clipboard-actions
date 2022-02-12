@@ -1,0 +1,37 @@
+#!/usr/bin/env -S dot -Tx11
+
+digraph Clipboard {
+    text [label="Text"]
+    image_path [label="Image path"]
+    url [label="URL"]
+    image_url [label="Image URL"]
+    yt_url [label="Youtube URL"]
+    image [label="Image"]
+    nop [label="«side effect»" style=dashed]
+
+    { rank=same; text image }
+    { rank=same; image_path url }
+    { rank=same; image_url yt_url }
+
+    {
+        edge [arrowtail=onormal dir=back]
+
+        text -> url
+        text -> image_path
+        url -> image_url
+        url -> yt_url
+    }
+
+    url -> nop [label="Browse"]
+    yt_url -> nop [label="Watch"]
+    yt_url -> nop [label="Listen"]
+    image_url -> image [label="Fetch"]
+    image_path -> image [label="Load"]
+
+    text -> text [label="Strip whitespace"]
+
+    image -> image_url [label="Upload"]
+    image -> image [label="Edit"]
+    image -> image_path [label="Save"]
+    image -> nop [label="View"]
+}
