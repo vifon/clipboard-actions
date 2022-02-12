@@ -10,7 +10,8 @@ from typing import Optional
 class Browse(Action):
     def apply(self) -> Optional[str]:
         subprocess.Popen(
-            shlex.split(self.config['www']['browser']) + ["--", self.clipboard()],
+            shlex.split(self.config["www"]["browser"])
+            + ["--", self.clipboard()],
             stdout=subprocess.DEVNULL,
             stderr=subprocess.DEVNULL,
         )
@@ -18,10 +19,12 @@ class Browse(Action):
 
     def enabled(self) -> bool:
         try:
-            return all([
-                self.config['www']['browser'],
-                re.match(r"https?://", self.clipboard()),
-            ])
+            return all(
+                [
+                    self.config["www"]["browser"],
+                    re.match(r"https?://", self.clipboard()),
+                ]
+            )
         except KeyError:
             return False
 
@@ -44,13 +47,17 @@ class OldReddit(Action):
 
 class Nitter(Action):
     def apply(self) -> Optional[str]:
-        return self.clipboard().replace("twitter.com", self.config['www']['nitter_url'])
+        return self.clipboard().replace(
+            "twitter.com", self.config["www"]["nitter_url"]
+        )
 
     def enabled(self) -> bool:
         try:
-            return all([
-                self.config['www']['nitter_url'],
-                "twitter.com" in self.clipboard(),
-            ])
+            return all(
+                [
+                    self.config["www"]["nitter_url"],
+                    "twitter.com" in self.clipboard(),
+                ]
+            )
         except KeyError:
             return False

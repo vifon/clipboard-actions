@@ -123,10 +123,12 @@ class ImageUpload(ImageEdit):
 
     def enabled(self) -> bool:
         try:
-            return all([
-                self.config['image']['upload_command'],
-                super().enabled(),
-            ])
+            return all(
+                [
+                    self.config["image"]["upload_command"],
+                    super().enabled(),
+                ]
+            )
         except KeyError:
             return False
 
@@ -172,7 +174,7 @@ class ImageFetch(Action):
         res.raise_for_status()
 
         try:
-            compress = self.config.getboolean('image', 'compress')
+            compress = self.config.getboolean("image", "compress")
         except KeyError:
             compress = False
 

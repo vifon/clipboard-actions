@@ -21,17 +21,19 @@ class Youtube(Action):
 class Invidious(Youtube):
     def enabled(self) -> bool:
         try:
-            return all([
-                self.config['youtube']['invidious_url'],
-                super().enabled(),
-            ])
+            return all(
+                [
+                    self.config["youtube"]["invidious_url"],
+                    super().enabled(),
+                ]
+            )
         except KeyError:
             return False
 
     def apply(self) -> Optional[str]:
         return re.sub(
             r"^https?://(?:www\.)?youtube.com/|^https?://youtu.be/",
-            self.config['youtube']['invidious_url'],
+            self.config["youtube"]["invidious_url"],
             self.clipboard(),
         )
 
@@ -52,16 +54,19 @@ class WatchYoutube(Youtube):
 class ListenYoutube(Youtube):
     def enabled(self) -> bool:
         try:
-            return all([
-                self.config['youtube']['listen_program'],
-                super().enabled(),
-            ])
+            return all(
+                [
+                    self.config["youtube"]["listen_program"],
+                    super().enabled(),
+                ]
+            )
         except KeyError:
             return False
 
     def apply(self) -> Optional[str]:
         subprocess.Popen(
-            shlex.split(self.config['youtube']['listen_program']) + [self.clipboard()],
+            shlex.split(self.config["youtube"]["listen_program"])
+            + [self.clipboard()],
             stdout=subprocess.DEVNULL,
             stderr=subprocess.DEVNULL,
         )

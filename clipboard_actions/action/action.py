@@ -4,7 +4,9 @@ from typing import Optional, Callable
 
 
 class Action:
-    def __init__(self, clipboard: Callable[..., str], config: ConfigParser):
+    def __init__(
+        self, clipboard: Callable[..., str], config: ConfigParser
+    ):
         self.clipboard = clipboard
         self.config = config
 

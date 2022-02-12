@@ -18,8 +18,8 @@ class ActionManager:
 
         config_path = os.path.join(
             os.environ.get(
-                'XDG_CONFIG_HOME',
-                os.path.join(os.environ['HOME'], ".config"),
+                "XDG_CONFIG_HOME",
+                os.path.join(os.environ["HOME"], ".config"),
             ),
             "clipboard-actions",
             "clipboard-actions.ini",
