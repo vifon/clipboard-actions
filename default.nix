@@ -8,6 +8,6 @@ buildPythonApplication rec {
   src = lib.cleanSource ./.;
 
   propagatedBuildInputs = [
-    httpx xsel xclip
+    httpx xsel xclip dmenu
   ];
 }
