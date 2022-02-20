@@ -11,7 +11,7 @@ class Browse(Action):
     def apply(self) -> Optional[str]:
         subprocess.Popen(
             shlex.split(self.config["www"]["browser"])
-            + ["--", self.clipboard()],
+            + [self.clipboard()],
             stdout=subprocess.DEVNULL,
             stderr=subprocess.DEVNULL,
         )
