@@ -53,7 +53,9 @@ class ImageTmpfile(Image):
         )
         assert isinstance(image_data, bytes)
         with tempfile.NamedTemporaryFile(
-            suffix=file_type, delete=False
+            prefix="image-",
+            suffix=file_type,
+            delete=False,
         ) as fh:
             try:
                 fh.write(image_data)
