@@ -47,8 +47,10 @@ class OldReddit(Action):
 
 class Nitter(Action):
     def apply(self) -> Optional[str]:
-        return self.clipboard().replace(
-            "twitter.com", self.config["www"]["nitter_url"]
+        return re.sub(
+            r"(?:mobile\.)?twitter.com",
+            self.config["www"]["nitter_url"],
+            self.clipboard(),
         )
 
     def enabled(self) -> bool:
