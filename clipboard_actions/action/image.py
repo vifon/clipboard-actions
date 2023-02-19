@@ -134,7 +134,7 @@ class ImageUpload(ImageEdit):
 
     def editor(self, path: str) -> bool:
         subprocess.check_call(
-            ["dumbload", "-r", path], stdout=sys.stderr.fileno()
+            [self.config["image"]["upload_command"], path], stdout=sys.stderr.fileno()
         )
         return False
 
