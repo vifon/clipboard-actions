@@ -1,17 +1,15 @@
 import re
 import shlex
 import subprocess
+from typing import Optional
 
 from . import Action
-
-from typing import Optional
 
 
 class Browse(Action):
     def apply(self) -> Optional[str]:
         subprocess.Popen(
-            shlex.split(self.config["www"]["browser"])
-            + [self.clipboard()],
+            shlex.split(self.config["www"]["browser"]) + [self.clipboard()],
             stdout=subprocess.DEVNULL,
             stderr=subprocess.DEVNULL,
         )
@@ -38,11 +36,7 @@ class OldReddit(Action):
         )
 
     def enabled(self) -> bool:
-        return bool(
-            re.match(
-                r"https?://(?:www\.)?reddit\.com/", self.clipboard()
-            )
-        )
+        return bool(re.match(r"https?://(?:www\.)?reddit\.com/", self.clipboard()))
 
 
 class Nitter(Action):

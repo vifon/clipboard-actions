@@ -4,13 +4,13 @@ import re
 import subprocess
 import sys
 import tempfile
+from typing import List, Optional
 
 import httpx
 
-from . import Action
 import clipboard_actions.utils as utils
 
-from typing import List, Optional
+from . import Action
 
 
 class Image(Action):
@@ -98,25 +98,19 @@ class ImageEdit(ImageTmpfile):
 
 class ImageView(ImageEdit):
     def editor(self, path: str) -> bool:
-        subprocess.check_call(
-            ["sxiv", path], stdout=sys.stderr.fileno()
-        )
+        subprocess.check_call(["sxiv", path], stdout=sys.stderr.fileno())
         return True
 
 
 class ImageEditGIMP(ImageEdit):
     def editor(self, path: str) -> bool:
-        subprocess.check_call(
-            ["gimp", path], stdout=sys.stderr.fileno()
-        )
+        subprocess.check_call(["gimp", path], stdout=sys.stderr.fileno())
         return True
 
 
 class ImageEditMTPaint(ImageEdit):
     def editor(self, path: str) -> bool:
-        subprocess.check_call(
-            ["mtpaint", path], stdout=sys.stderr.fileno()
-        )
+        subprocess.check_call(["mtpaint", path], stdout=sys.stderr.fileno())
         return True
 
 
@@ -136,7 +130,8 @@ class ImageUpload(ImageEdit):
 
     def editor(self, path: str) -> bool:
         subprocess.check_call(
-            [self.config["image"]["upload_command"], path], stdout=sys.stderr.fileno()
+            [self.config["image"]["upload_command"], path],
+            stdout=sys.stderr.fileno(),
         )
         return False
 
@@ -159,9 +154,7 @@ class ImageLoad(Action):
         if path.startswith("/"):
             mime, encoding = mimetypes.guess_type(path)
             return (
-                mime is not None
-                and mime.startswith("image/")
-                and os.path.exists(path)
+                mime is not None and mime.startswith("image/") and os.path.exists(path)
             )
         else:
             return False

@@ -1,12 +1,9 @@
 from configparser import ConfigParser
-
-from typing import Optional, Callable
+from typing import Callable, Optional
 
 
 class Action:
-    def __init__(
-        self, clipboard: Callable[..., str], config: ConfigParser
-    ):
+    def __init__(self, clipboard: Callable[..., str], config: ConfigParser):
         self.clipboard = clipboard
         self.config = config
 

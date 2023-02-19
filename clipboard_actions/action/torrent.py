@@ -1,10 +1,10 @@
 import shlex
 import subprocess
+from typing import Optional
 
-from . import Action
 import clipboard_actions.utils as utils
 
-from typing import Optional
+from . import Action
 
 
 class Torrent(Action):

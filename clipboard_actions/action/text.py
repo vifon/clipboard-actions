@@ -1,15 +1,12 @@
-from . import Action
-
+import textwrap
 from typing import Optional
 
-import textwrap
+from . import Action
 
 
 class StripLinewise(Action):
     def apply(self) -> Optional[str]:
-        return "\n".join(
-            map(str.strip, self.clipboard().split("\n"))
-        ).lstrip()
+        return "\n".join(map(str.strip, self.clipboard().split("\n"))).lstrip()
 
     def enabled(self) -> bool:
         return bool(self.clipboard())

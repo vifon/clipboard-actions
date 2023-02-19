@@ -1,11 +1,11 @@
 import re
 import shlex
 import subprocess
+from typing import Optional
 
-from . import Action
 import clipboard_actions.utils as utils
 
-from typing import Optional
+from . import Action
 
 
 class Youtube(Action):
@@ -65,8 +65,7 @@ class ListenYoutube(Youtube):
 
     def apply(self) -> Optional[str]:
         subprocess.Popen(
-            shlex.split(self.config["youtube"]["listen_program"])
-            + [self.clipboard()],
+            shlex.split(self.config["youtube"]["listen_program"]) + [self.clipboard()],
             stdout=subprocess.DEVNULL,
             stderr=subprocess.DEVNULL,
         )

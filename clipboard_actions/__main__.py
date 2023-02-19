@@ -1,10 +1,10 @@
 import logging
 import subprocess
 
-from .action_manager import ActionManager
-from .action import *
-
 import clipboard_actions.utils as utils
+
+from .action import *
+from .action_manager import ActionManager
 
 logging.basicConfig(level=logging.INFO)
 

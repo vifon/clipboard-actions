@@ -1,5 +1,4 @@
 import subprocess
-
 from typing import Union
 
 
@@ -48,6 +47,4 @@ def set_clipboard(
 
 
 def notify(title: str, body: str = None) -> None:
-    subprocess.check_call(
-        ["notify-send", title, *([body] if body else [])]
-    )
+    subprocess.check_call(["notify-send", title, *([body] if body else [])])

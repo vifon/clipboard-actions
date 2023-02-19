@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from setuptools import setup, find_packages
+from setuptools import find_packages, setup
 
 setup(
     name="clipboard-actions",
@@ -8,8 +8,8 @@ setup(
     packages=find_packages(),
     py_modules=[],
     entry_points={
-        'console_scripts': [
-            'clipboard-actions = clipboard_actions.__main__:main',
+        "console_scripts": [
+            "clipboard-actions = clipboard_actions.__main__:main",
         ],
     },
 )

@@ -1,13 +1,12 @@
-from configparser import ConfigParser
-from functools import lru_cache
 import logging
 import os
 import subprocess
+from configparser import ConfigParser
+from functools import lru_cache
+from typing import Dict, List, Optional, Type
 
 from . import utils
 from .action.action import Action
-
-from typing import Optional, Dict, List, Type
 
 logger = logging.getLogger(__name__)
 
@@ -32,11 +31,7 @@ class ActionManager:
         return action
 
     def list(self, clipboard: str) -> List[str]:
-        return [
-            name
-            for name, action in self.actions.items()
-            if action.enabled()
-        ]
+        return [name for name, action in self.actions.items() if action.enabled()]
 
     def apply(self, action_name: str) -> Optional[str]:
         action = self.actions[action_name]
