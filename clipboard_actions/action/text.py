@@ -4,7 +4,7 @@ from typing import Optional
 from . import Action
 
 
-class StripLinewise(Action):
+class MinimizeWhitespaceLinewise(Action):
     def apply(self) -> Optional[str]:
         return "\n".join(map(str.strip, self.clipboard().split("\n"))).lstrip()
 
@@ -12,7 +12,7 @@ class StripLinewise(Action):
         return bool(self.clipboard())
 
 
-class StripAll(Action):
+class MinimizeWhitespace(Action):
     def apply(self) -> Optional[str]:
         return " ".join(self.clipboard().split())
 

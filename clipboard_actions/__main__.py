@@ -22,9 +22,9 @@ actions = {
     "Twitter to Nitter": Nitter,
     "Reddit Old": OldReddit,
     "Browse": Browse,
-    "Strip whitespace linewise": StripLinewise,
+    "Minimize whitespace": MinimizeWhitespace,
+    "Minimize whitespace linewise": MinimizeWhitespaceLinewise,
     "Strip indent": StripIndent,
-    "Strip all whitespace": StripAll,
 }
 
 
