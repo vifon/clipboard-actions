@@ -1,10 +1,10 @@
 import subprocess
-from typing import Union
+from typing import Optional, Union
 
 
 def get_clipboard(
     selection: str = "clipboard",
-    target: str = None,
+    target: Optional[str] = None,
     universal_newlines: bool = True,
     **kwargs
 ) -> str:
@@ -24,10 +24,10 @@ def get_clipboard(
 
 
 def set_clipboard(
-    input: Union[str, bytes] = None,
+    input: Optional[Union[str, bytes]] = None,
     stdin=subprocess.PIPE,
     selection: str = "clipboard",
-    target: str = None,
+    target: Optional[str] = None,
     universal_newlines: bool = True,
     **kwargs
 ) -> None:
@@ -46,5 +46,5 @@ def set_clipboard(
     xclip.communicate(input, timeout=3)
 
 
-def notify(title: str, body: str = None) -> None:
+def notify(title: str, body: Optional[str] = None) -> None:
     subprocess.check_call(["notify-send", title, *([body] if body else [])])
