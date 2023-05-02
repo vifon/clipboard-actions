@@ -25,6 +25,7 @@ actions = {
     "Minimize whitespace": MinimizeWhitespace,
     "Minimize whitespace linewise": MinimizeWhitespaceLinewise,
     "Strip indent": StripIndent,
+    "Fullwidth": Fullwidth,
 }
 
 
