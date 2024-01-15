@@ -34,4 +34,5 @@ digraph Clipboard {
     image -> image [label="Edit"]
     image -> image_path [label="Save"]
     image -> nop [label="View"]
+    image -> text [label="OCR"]
 }

@@ -217,3 +217,22 @@ class ImageLoadOrFetch(Action):
         self.local = self.local_loader.enabled()
         self.remote = self.remote_fetcher.enabled()
         return self.local or self.remote
+
+
+class ImageToText(ImageEdit):
+    """Use OCR to read the text from the image."""
+
+    def editor(self, path: str) -> bool:
+        with tempfile.NamedTemporaryFile(
+            prefix="ocr-",
+            suffix=".txt",
+            mode="w+",
+        ) as output_file:
+            output_with_no_ext = output_file.name[:-4]
+            subprocess.check_call(
+                ["tesseract", path, output_with_no_ext],
+                stdout=sys.stderr.fileno(),
+            )
+            output_file.seek(0)
+            utils.set_clipboard(input=output_file.read())
+            return False

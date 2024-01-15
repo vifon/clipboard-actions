@@ -14,6 +14,7 @@ actions = {
     "Listen YouTube": ListenYoutube,
     "Download Torrent": Torrent,
     "View image": ImageView,
+    "Image to text": ImageToText,
     "Edit with GIMP": ImageEditGIMP,
     "Edit with mtpaint": ImageEditMTPaint,
     "Upload image": ImageUpload,
