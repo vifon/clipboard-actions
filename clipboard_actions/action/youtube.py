@@ -12,7 +12,7 @@ class Youtube(Action):
     def enabled(self) -> bool:
         return bool(
             re.search(
-                r"^https?://(?:www\.)?youtube.com/|^https?://youtu.be/",
+                r"^https?://(?:www\.|m\.)?youtube.com/|^https?://youtu.be/",
                 self.clipboard(),
             )
         )
@@ -32,7 +32,7 @@ class Invidious(Youtube):
 
     def apply(self) -> Optional[str]:
         return re.sub(
-            r"^https?://(?:www\.)?youtube.com/|^https?://youtu.be/",
+            r"^https?://(?:www\.|m\.)?youtube.com/|^https?://youtu.be/",
             self.config["youtube"]["invidious_url"],
             self.clipboard(),
         )
